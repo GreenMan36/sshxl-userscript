@@ -1,0 +1,8 @@
+dist/
+node_modules/
+tests/browser/out/
+sshxl.nl/
+*.log
+*.htm
+.DS_Store
+.omp

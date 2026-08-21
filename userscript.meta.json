@@ -1,0 +1,17 @@
+{
+  "name": "SSH XL Auto-Apply",
+  "namespace": "GreenMan36",
+  "version": "2.0.0",
+  "description": "Helps you automatically apply to the most SSH XL listings possible.",
+  "author": "GreenMan36",
+  "license": "MIT",
+  "homepage": "https://github.com/GreenMan36/sshxl-userscript",
+  "icon": "https://www.sshxl.nl/favicon.ico",
+  "match": [
+    "https://www.sshxl.nl/nl/aanbod*",
+    "https://www.sshxl.nl/nl/mijn-ssh/reacties*",
+    "https://www.sshxl.nl/nl/mijn-ssh/mijn-profiel*"
+  ],
+  "grant": ["GM_setValue", "GM_getValue", "GM_deleteValue", "GM_addValueChangeListener"],
+  "run-at": "document-end"
+}

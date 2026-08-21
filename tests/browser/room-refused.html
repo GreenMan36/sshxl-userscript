@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>room refused</title>
+  </head>
+  <body>
+    <header>
+      <div class="pageheader__actions">
+        <button class="button button--small button--block">
+          <span class="button__label">Reageer op deze kamer</span
+          ><svg class="button__icon"><use href="#icon--arrow"></use></svg>
+        </button>
+      </div>
+    </header>
+    <!-- Pre-rendered hidden refusal modal, like the real page -->
+    <section id="a11y-modal" class="modal modal--default gutter--default" aria-hidden="true">
+      <div class="modal__inner bs--d">
+        <div class="modal__content">
+          <header class="modal__header">
+            <h2 class="modal__title title--s">Niet mogelijk om te reageren</h2>
+          </header>
+          <div class="text--styled text--m">
+            <p>Helaas kun je niet op deze woonruimte reageren.</p>
+          </div>
+        </div>
+        <footer class="modal__footer dl--t">
+          <button class="button button--primary">Begrepen</button>
+        </footer>
+      </div>
+    </section>
+    <script>
+      // Clicking Reageer reveals the pre-rendered refusal modal instead of a
+      // confirm dialog: the site refuses this room.
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".pageheader__actions button");
+        if (!btn) return;
+        setTimeout(function () {
+          document.getElementById("a11y-modal").setAttribute("aria-hidden", "false");
+        }, 600);
+      });
+      // "Begrepen" dismisses it.
+      document
+        .querySelector("#a11y-modal .modal__footer button")
+        .addEventListener("click", function () {
+          document.getElementById("a11y-modal").setAttribute("aria-hidden", "true");
+        });
+    </script>
+  </body>
+</html>

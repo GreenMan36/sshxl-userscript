@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>room</title>
+  </head>
+  <body>
+    <header>
+      <div class="pageheader__actions">
+        <button class="button button--small button--block">
+          <span class="button__label">Reageer op deze kamer</span
+          ><svg class="button__icon"><use href="#icon--arrow"></use></svg>
+        </button>
+      </div>
+    </header>
+    <script>
+      // Minimal stand-in for the site's modal machinery: clicking the react
+      // button opens the confirm modal after a short delay, like the real app.
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".pageheader__actions button");
+        if (!btn) return;
+        setTimeout(function () {
+          var modal = document.createElement("div");
+          modal.className = "modal";
+          modal.innerHTML =
+            '<div class="modal__footer"><button class="button button--primary">Bevestigen</button></div>';
+          document.body.appendChild(modal);
+          modal.querySelector(".button--primary").addEventListener("click", function () {
+            modal.remove();
+            setTimeout(function () {
+              btn.querySelector(".button__label").textContent = "Bekijk mijn reactie";
+            }, 400);
+          });
+        }, 600);
+      });
+    </script>
+  </body>
+</html>
